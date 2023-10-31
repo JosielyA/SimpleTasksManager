@@ -1,14 +1,21 @@
 import { FaTrash } from "react-icons/fa";
 import TodoUpdate from "./TodoUpdate";
 
-function TodoItem() {
+function TodoItem({
+  todo,
+  handleDeleteTodo,
+  handleUpdateTodo,
+  handleCompleteTodo,
+}) {
   return (
     <li>
-      <span>
-        <label htmlFor="" className="container-done"></label>
+      <span onClick={() => handleCompleteTodo(todo.id)}>
+        <label
+          className={`container-done ${todo.done ? "active" : ""}`}
+        ></label>
       </span>
-      <TodoUpdate />
-      <button className="btn-delete">
+      <TodoUpdate todo={todo} handleUpdateTodo={handleUpdateTodo} />
+      <button className="btn-delete" onClick={() => handleDeleteTodo(todo.id)}>
         <FaTrash />
       </button>
     </li>

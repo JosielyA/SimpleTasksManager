@@ -1,23 +1,22 @@
 import TodoItem from "./TodoItem";
 
-function TodoList() {
+function TodoList({
+  todos,
+  handleDeleteTodo,
+  handleUpdateTodo,
+  handleCompleteTodo,
+}) {
   return (
     <ul>
-      <li>
-        <TodoItem />
-      </li>
-      <li>
-        <TodoItem />
-      </li>
-      <li>
-        <TodoItem />
-      </li>
-      <li>
-        <TodoItem />
-      </li>
-      <li>
-        <TodoItem />
-      </li>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          handleUpdateTodo={handleUpdateTodo}
+          handleDeleteTodo={handleDeleteTodo}
+          handleCompleteTodo={handleCompleteTodo}
+        />
+      ))}
     </ul>
   );
 }
