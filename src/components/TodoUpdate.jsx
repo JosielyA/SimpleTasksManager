@@ -1,44 +1,40 @@
 import { FaEdit } from "react-icons/fa";
 import { useForm } from "../hooks/useForm";
 import { useRef, useState } from "react";
-import { toast } from "react-toastify";
+import Notify from "./Notify";
 
 function TodoUpdate({ todo, handleUpdateTodo }) {
-  const notify = (text) => {
-    toast.error(text, {
-      position: "top-center",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
+  // useForm para manejar los eventos de los inputs
   const { updateTitle, updateDescription, onInputChange } = useForm({
     updateTitle: todo.title,
     updateDescription: todo.description,
   });
 
+  //Manejar cuando se puede editar o no una tarea
   const [disable, setDisable] = useState(true);
+  //Focus en input
   const focusInputRef = useRef();
 
   const onSubmitUpdate = (e) => {
     e.preventDefault();
 
-    if (updateDescription.length <= 1 || updateTitle.length <= 1) {
-      notify("Title and description length must be langer than 1 character.");
+    //Validacion de que los valores de los inpus deben ser mayores que 1
+    if (updateDescription.length <= 0 || updateTitle.length <= 0) {
+      //Notificacion de error
+      Notify("El título y la descripción son obligatorios.");
       return;
     }
     const id = todo.id;
     const title = updateTitle;
     const description = updateDescription;
 
+    //Actualizar tarea
     handleUpdateTodo(id, title, description);
+    //Negacion de estado de focus en input
     setDisable(!disable);
     focusInputRef.current.focus();
   };
+  /*Formulario de actualizar tarea */
   return (
     <form onSubmit={onSubmitUpdate}>
       <input
@@ -47,7 +43,7 @@ function TodoUpdate({ todo, handleUpdateTodo }) {
         name="updateTitle"
         value={updateTitle}
         onChange={onInputChange}
-        placeholder="Title"
+        placeholder="Título"
         readOnly={disable}
         ref={focusInputRef}
       />
@@ -57,7 +53,7 @@ function TodoUpdate({ todo, handleUpdateTodo }) {
         name="updateDescription"
         value={updateDescription}
         onChange={onInputChange}
-        placeholder="Description"
+        placeholder="Descripción"
         readOnly={disable}
         ref={focusInputRef}
       />

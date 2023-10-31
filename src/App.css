@@ -10,6 +10,7 @@
   --azul-hover: #48cae4;
   --rojo-hover: #e5383b;
   --verde: #09a129;
+  --verde-hover: #44d463;
 }
 
 body {
@@ -136,7 +137,7 @@ ul li form {
 }
 
 .btn-edit:hover {
-  background-color: var(--azul-hover);
+  background-color: var(--verde-hover);
 }
 
 form {
@@ -174,5 +175,5 @@ form {
 }
 
 .btn-add:hover {
-  background-color: var(--azul-hover);
+  background-color: var(--rojo-hover);
 }

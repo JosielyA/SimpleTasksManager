@@ -2,10 +2,11 @@ import TodoList from "./components/TodoList";
 import AddTask from "./components/AddTask";
 import "./App.css";
 import { useTodo } from "./hooks/useTodo";
-import { ToastContainer } from "react-toastify";
+import NotifyContainer from "./components/NotifyContainer";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  //Destructurando variables y funciones de useTodo
   const {
     todos,
     todosCount,
@@ -16,29 +17,18 @@ function App() {
     handleCompleteTodo,
   } = useTodo();
 
+  //Pagina y contenedores principales
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={4000}
-        limit={3}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <NotifyContainer />
       <div className="card-to-do">
-        <h1>Tasks List</h1>
+        <h1>Lista de tareas</h1>
         <div className="counter-todos">
-          <h3>Number of tasks: {todosCount}</h3>
-          <h3>Pending tasks: {pendingTodoCount}</h3>
+          <h3>Numero de tareas: {todosCount}</h3>
+          <h3>Numero de tareas pendientes: {pendingTodoCount}</h3>
         </div>
         <div className="add-todo">
-          <h3>Add task</h3>
+          <h3>Agregar tarea</h3>
           <AddTask handleNewTodo={handleNewTodo} />
         </div>
         <TodoList

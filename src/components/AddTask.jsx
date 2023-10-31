@@ -1,31 +1,23 @@
 import { useForm } from "../hooks/useForm";
-import { toast } from "react-toastify";
+import Notify from "./Notify";
 
 function AddTask({ handleNewTodo }) {
-  const notify = (text) => {
-    toast.error(text, {
-      position: "top-center",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
+  //Manejo de eventos de formulario con useForm
   const { title, description, onInputChange, onResetForm } = useForm({
     title: "",
     description: "",
   });
 
+  //Funcion para enviar datos del formulario
   const onFormSubmit = (e) => {
     e.preventDefault();
-    if (title.length <= 1 || description.length <= 1) {
-      notify("Title and description length must be langer than 1 character.");
+    //Validar que la longitud del formulario sea mayor a 1
+    if (title.length <= 0 || description.length <= 0) {
+      //Notificacion de error
+      Notify("El título y la descripción son obligatorios.");
       return;
     }
+    //Enviando datos del formulario
     let newTodo = {
       id: new Date().getTime(),
       title: title,
@@ -33,9 +25,10 @@ function AddTask({ handleNewTodo }) {
       done: false,
     };
     handleNewTodo(newTodo);
+    //Restaurar formulario
     onResetForm();
   };
-
+  /*Formulario de nueva tarea */
   return (
     <form onSubmit={onFormSubmit}>
       <input
@@ -44,7 +37,7 @@ function AddTask({ handleNewTodo }) {
         name="title"
         value={title}
         onChange={onInputChange}
-        placeholder="Title"
+        placeholder="Título"
       />
       <br />
       <input
@@ -53,7 +46,7 @@ function AddTask({ handleNewTodo }) {
         name="description"
         value={description}
         onChange={onInputChange}
-        placeholder="Description"
+        placeholder="Descripción"
       />
       <br />
       <button className="btn-add" type="submit">

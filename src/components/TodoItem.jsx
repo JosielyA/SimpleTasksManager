@@ -1,6 +1,8 @@
 import { FaTrash } from "react-icons/fa";
 import TodoUpdate from "./TodoUpdate";
 
+
+//Componente de tarea
 function TodoItem({
   todo,
   handleDeleteTodo,

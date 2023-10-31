@@ -1,18 +1,24 @@
 /*
+ESTRUCTURA DE TAREAS
   todo: {
   id: 1231242423,
-  title: "aprender php",
-  description: "tengo que aprender php",
+  title: "algun titulo",
+  description: "descripcion de la tarea",
   done: false
   }
 */
-
+// Reducer para manejar los eventos  de las tareas
 export const todoReducer = (initialState, action) => {
   switch (action.type) {
+    //En caso de agregar tarea
     case "Add Todo":
       return [...initialState, action.payload];
+
+    //En caso de eliminar tarea
     case "Delete Todo":
       return initialState.filter((todo) => todo.id !== action.payload);
+
+    //En caso de actualizar tarea
     case "Update Todo":
       return initialState.map((todo) => {
         if (todo.id === action.payload.id) {
@@ -24,6 +30,8 @@ export const todoReducer = (initialState, action) => {
         }
         return todo;
       });
+
+    //En caso de que la tarea sea marcada como completada
     case "Complete Todo":
       return initialState.map((todo) => {
         if (todo.id === action.payload) {
@@ -34,6 +42,8 @@ export const todoReducer = (initialState, action) => {
         }
         return todo;
       });
+
+    // En caso de que no se cumpla ninguno de los anteriores
     default:
       return initialState;
   }
