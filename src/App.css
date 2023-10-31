@@ -56,22 +56,21 @@ ul {
 }
 
 ul li {
-  list-style: none;
   display: flex;
+  list-style: none;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
 }
 
 ul li span {
+  display: flex;
   overflow: hidden;
   cursor: pointer;
-  display: flex;
   align-items: center;
 }
 
 ul li form {
-  flex: 1;
   display: flex;
   justify-content: space-between;
 }
@@ -91,7 +90,7 @@ ul li form {
   background-color: white;
   width: 24px;
   height: 24px;
-  border-radius: 20px;
+  border-radius: 5px;
   border: 2px solid var(--verde);
   cursor: pointer;
 }
@@ -112,7 +111,7 @@ ul li form {
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50%;
+  border-radius: 20%;
   transition: all 0.3s;
   cursor: pointer;
   font-family: inherit;
@@ -123,14 +122,14 @@ ul li form {
 }
 
 .btn-edit {
-  background-color: var(--azul);
+  background-color: var(--verde);
   color: #fff;
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50%;
+  border-radius: 20%;
   transition: all 0.3s;
   cursor: pointer;
   font-family: inherit;

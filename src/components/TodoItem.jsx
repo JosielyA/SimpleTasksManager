@@ -1,14 +1,17 @@
+import { FaTrash } from "react-icons/fa";
+import TodoUpdate from "./TodoUpdate";
+
 function TodoItem() {
   return (
-    <div>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-      <p>TodoItem</p>
-    </div>
+    <li>
+      <span>
+        <label htmlFor="" className="container-done"></label>
+      </span>
+      <TodoUpdate />
+      <button className="btn-delete">
+        <FaTrash />
+      </button>
+    </li>
   );
 }
 

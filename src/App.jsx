@@ -15,8 +15,8 @@ function App() {
           <h3>Add task</h3>
           <AddTask />
         </div>
+        <TodoList />
       </div>
-      <TodoList />
     </>
   );
 }

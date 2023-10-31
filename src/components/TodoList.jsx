@@ -2,10 +2,23 @@ import TodoItem from "./TodoItem";
 
 function TodoList() {
   return (
-    <div>
-      <h1>TodoList</h1>
-      <TodoItem />
-    </div>
+    <ul>
+      <li>
+        <TodoItem />
+      </li>
+      <li>
+        <TodoItem />
+      </li>
+      <li>
+        <TodoItem />
+      </li>
+      <li>
+        <TodoItem />
+      </li>
+      <li>
+        <TodoItem />
+      </li>
+    </ul>
   );
 }
 
